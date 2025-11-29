@@ -10,7 +10,7 @@
     <div class="text-sm text-slate-600 mb-4">实时查看生成的TOML代码</div>
 
     <div class="flex-1 bg-slate-900 rounded-xl p-6 overflow-auto shadow-inner">
-      <div class="toml-highlight" v-html="highlightedToml"></div>
+      <pre class="toml-highlight">{{ tomlContent }}</pre>
     </div>
 
     <div class="mt-4 flex items-center gap-2">
@@ -38,10 +38,6 @@ const copyButtonText = ref('隐藏预览')
 
 const tomlContent = computed(() => {
   return generateToml(props.config)
-})
-
-const highlightedToml = computed(() => {
-  return highlightToml(tomlContent.value)
 })
 
 function generateToml(config) {
@@ -74,27 +70,6 @@ function generateToml(config) {
   toml += 'base_url = "https://YOUR_AZURE_RESOURCE.openai.azure.com/openai/deployments/YOUR_DEPLOYMENT_NAME"\n'
 
   return toml
-}
-
-function highlightToml(toml) {
-  let html = toml
-
-  // Highlight sections
-  html = html.replace(/\[([^\]]+)\]/g, '<span class="tok-section">[$1]</span>')
-
-  // Highlight keys
-  html = html.replace(/^(\s*)([a-zA-Z_][a-zA-Z0-9_]*)\s*=/gm, '$1<span class="tok-key">$2</span> =')
-
-  // Highlight strings
-  html = html.replace(/"([^"]*)"/g, '<span class="tok-string">"$1"</span>')
-
-  // Highlight numbers
-  html = html.replace(/\b(\d+)\b/g, '<span class="tok-number">$1</span>')
-
-  // Highlight booleans
-  html = html.replace(/\b(true|false)\b/g, '<span class="tok-boolean">$1</span>')
-
-  return html
 }
 
 async function copyToClipboard() {
