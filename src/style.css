@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+#app {
+  margin: 0;
+  min-height: 100vh;
+}
+
+.toml-highlight {
+  font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  color: #e2e8f0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.55;
+}
+
+.toml-highlight .tok-section {
+  color: #93c5fd;
+  font-weight: 600;
+}
+
+.toml-highlight .tok-key {
+  color: #38bdf8;
+  font-weight: 500;
+}
+
+.toml-highlight .tok-string {
+  color: #34d399;
+}
+
+.toml-highlight .tok-number {
+  color: #fbbf24;
+}
+
+.toml-highlight .tok-boolean {
+  color: #c084fc;
+  font-weight: 600;
+}
+
+.toml-highlight .tok-collection {
+  color: #fb7185;
+}
+
+.toml-highlight .tok-comment {
+  color: #94a3b8;
+  font-style: italic;
+}
+
+.toml-highlight .tok-text {
+  color: #e2e8f0;
+}
